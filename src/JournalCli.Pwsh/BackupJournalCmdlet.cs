@@ -3,10 +3,10 @@ using System.IO.Abstractions;
 using System.Management.Automation;
 using ICSharpCode.SharpZipLib.Zip;
 using JetBrains.Annotations;
-using JournalCli.Pwsh.Core;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library;
+using JournalCli.Library.Infrastructure;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsData.Backup, "Journal")]

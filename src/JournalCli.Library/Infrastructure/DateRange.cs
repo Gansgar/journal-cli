@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using JournalCli.Pwsh.Core;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class DateRange
     {

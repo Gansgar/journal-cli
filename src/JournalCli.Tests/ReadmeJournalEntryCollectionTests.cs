@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using JournalCli.Pwsh.Core;
+using JournalCli.Library;
 using NodaTime;
 using Xunit;
 

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using JournalCli.Pwsh.Core;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     public interface IJournalReader
     {

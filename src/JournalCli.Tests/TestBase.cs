@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO.Abstractions.TestingHelpers;
 using System.Linq;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 
 namespace JournalCli.Tests

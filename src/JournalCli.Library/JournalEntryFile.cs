@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     public class JournalEntryFile : IJournalEntry, IComparable<JournalEntryFile>, IEquatable<JournalEntryFile>
     {

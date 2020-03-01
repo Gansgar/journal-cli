@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Management.Automation;
 using JetBrains.Annotations;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsCommon.Rename, "JournalTag", ConfirmImpact = ConfirmImpact.High)]

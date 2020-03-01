@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     public interface IJournalFrontMatter
     {

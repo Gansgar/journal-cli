@@ -1,4 +1,4 @@
-﻿namespace JournalCli.Pwsh.Infrastructure
+﻿namespace JournalCli.Library.Infrastructure
 {
     internal interface IJournalReaderWriterFactory
     {

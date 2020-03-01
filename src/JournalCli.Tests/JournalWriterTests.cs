@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using FakeItEasy;
 using FluentAssertions;
-using JournalCli.Pwsh.Core;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library;
+using JournalCli.Library.Infrastructure;
 using Xunit;
 
 namespace JournalCli.Tests

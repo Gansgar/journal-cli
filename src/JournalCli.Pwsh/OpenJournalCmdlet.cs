@@ -2,11 +2,11 @@
 using System.IO.Abstractions;
 using System.Management.Automation;
 using JetBrains.Annotations;
-using JournalCli.Pwsh.Core;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     // TODO: "DefaultJournal" or just "Journal"? This will have an impact when named journals are introduced.
     // https://github.com/refactorsaurusrex/journal-cli/issues/23

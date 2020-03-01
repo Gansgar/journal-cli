@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Management.Automation;
 using JetBrains.Annotations;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsCommon.New, "JournalEntry")]

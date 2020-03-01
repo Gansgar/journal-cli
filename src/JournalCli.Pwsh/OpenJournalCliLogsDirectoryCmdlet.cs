@@ -2,7 +2,7 @@
 using System.Management.Automation;
 using JetBrains.Annotations;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsCommon.Open, "JournalCliLogsDirectory")]

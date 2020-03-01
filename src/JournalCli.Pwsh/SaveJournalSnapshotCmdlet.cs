@@ -1,8 +1,8 @@
 ﻿using System.Management.Automation;
 using JetBrains.Annotations;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsData.Save, "JournalSnapshot")]

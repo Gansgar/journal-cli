@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class HeaderValidator
     {

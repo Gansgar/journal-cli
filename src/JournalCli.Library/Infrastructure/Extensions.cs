@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
-using JournalCli.Pwsh.Core;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal static class Extensions
     {

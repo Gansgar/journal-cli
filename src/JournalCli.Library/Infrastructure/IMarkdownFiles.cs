@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     public interface IMarkdownFiles
     {

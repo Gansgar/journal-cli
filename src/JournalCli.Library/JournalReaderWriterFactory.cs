@@ -1,7 +1,7 @@
 ﻿using System.IO.Abstractions;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     internal class JournalReaderWriterFactory : IJournalReaderWriterFactory
     {

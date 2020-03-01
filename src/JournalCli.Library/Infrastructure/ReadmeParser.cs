@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class ReadmeParser
     {

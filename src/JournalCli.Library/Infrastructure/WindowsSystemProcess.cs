@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class WindowsSystemProcess : ISystemProcess
     {

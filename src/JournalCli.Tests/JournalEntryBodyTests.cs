@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Xunit;
 using System.Linq;
 using FluentAssertions;
-using JournalCli.Pwsh.Core;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 
 // ReSharper disable StringLiteralTypo

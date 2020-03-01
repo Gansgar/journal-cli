@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     public interface IJournalEntry
     {

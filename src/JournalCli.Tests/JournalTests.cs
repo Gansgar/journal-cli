@@ -6,8 +6,8 @@ using System.IO.Abstractions.TestingHelpers;
 using System.Linq;
 using FakeItEasy;
 using FluentAssertions;
-using JournalCli.Pwsh.Core;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 using Xunit;
 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     internal class JournalReader : IJournalReader
     {

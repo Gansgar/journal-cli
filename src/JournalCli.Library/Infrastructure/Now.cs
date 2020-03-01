@@ -1,7 +1,7 @@
 ﻿using NodaTime;
 using NodaTime.Extensions;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal static class Now
     {

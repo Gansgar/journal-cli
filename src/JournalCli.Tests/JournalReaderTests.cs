@@ -2,8 +2,8 @@
 using System.IO.Abstractions.TestingHelpers;
 using System.Text;
 using FluentAssertions;
-using JournalCli.Pwsh.Core;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library;
+using JournalCli.Library.Infrastructure;
 using Xunit;
 
 namespace JournalCli.Tests

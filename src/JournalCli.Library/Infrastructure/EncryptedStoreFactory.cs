@@ -1,7 +1,7 @@
 ﻿using System.IO.Abstractions;
 using System.Runtime.InteropServices;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class EncryptedStoreFactory
     {

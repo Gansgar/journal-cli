@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO.Abstractions;
 using System.Linq;
-using JournalCli.Pwsh.Core;
 using NodaTime;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class JournalWriter : IJournalWriter
     {

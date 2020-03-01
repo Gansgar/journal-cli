@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 using YamlDotNet.RepresentationModel;
 using YamlDotNet.Serialization;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     internal class JournalFrontMatter : IJournalFrontMatter
     {

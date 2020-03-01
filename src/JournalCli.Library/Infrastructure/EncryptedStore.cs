@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO.Abstractions;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal abstract class EncryptedStore<T> : IEncryptedStore<T>
         where T : class, new()

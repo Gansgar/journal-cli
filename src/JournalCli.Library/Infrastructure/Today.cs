@@ -2,7 +2,7 @@
 using NodaTime;
 using NodaTime.Extensions;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class Today
     {

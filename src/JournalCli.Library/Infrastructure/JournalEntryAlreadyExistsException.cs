@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     public class JournalEntryAlreadyExistsException : Exception
     {

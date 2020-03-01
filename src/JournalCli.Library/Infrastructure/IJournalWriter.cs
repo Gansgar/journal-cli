@@ -1,7 +1,6 @@
-﻿using JournalCli.Pwsh.Core;
-using NodaTime;
+﻿using NodaTime;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal interface IJournalWriter
     {

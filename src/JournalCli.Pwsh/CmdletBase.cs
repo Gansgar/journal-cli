@@ -5,10 +5,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Reflection;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using Serilog;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     public abstract class CmdletBase : PSCmdlet
     {

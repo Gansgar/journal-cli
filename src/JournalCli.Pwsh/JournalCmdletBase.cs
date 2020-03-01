@@ -2,13 +2,13 @@
 using System.IO.Abstractions;
 using System.Linq;
 using System.Management.Automation;
-using JournalCli.Pwsh.Core;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library;
+using JournalCli.Library.Infrastructure;
 using Serilog;
 using Git = LibGit2Sharp;
 using Version = System.Version;
 
-namespace JournalCli.Pwsh.Cmdlets
+namespace JournalCli.Pwsh
 {
     public abstract class JournalCmdletBase : CmdletBase
     {

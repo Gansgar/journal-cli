@@ -3,7 +3,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using SysIO = System.IO;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     public class MarkdownFiles : IMarkdownFiles
     {

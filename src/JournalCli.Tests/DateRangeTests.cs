@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentAssertions;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 using Xunit;
 

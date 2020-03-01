@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 using NodaTime.Text;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     internal class Journal
     {

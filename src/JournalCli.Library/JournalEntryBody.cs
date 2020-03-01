@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JournalCli.Pwsh.Infrastructure;
+using JournalCli.Library.Infrastructure;
 using NodaTime;
 using NodaTime.Text;
 
 // ReSharper disable StringLiteralTypo
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     internal class JournalEntryBody : IEnumerable<(string header, string text)>
     {

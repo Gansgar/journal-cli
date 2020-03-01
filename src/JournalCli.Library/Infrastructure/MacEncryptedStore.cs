@@ -2,7 +2,7 @@
 using System.IO.Abstractions;
 using YamlDotNet.Serialization;
 
-namespace JournalCli.Pwsh.Infrastructure
+namespace JournalCli.Library.Infrastructure
 {
     internal class MacEncryptedStore<T> : EncryptedStore<T>
         where T : class, new()

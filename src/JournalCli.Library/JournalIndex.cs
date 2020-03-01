@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace JournalCli.Pwsh.Core
+namespace JournalCli.Library
 {
     public class JournalIndex<T> : KeyedCollection<string, JournalIndexEntry<T>>
         where T : class, IJournalEntry
