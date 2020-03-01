@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -21,12 +21,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JournalCli\JournalCli.csproj" />
+    <Folder Include="TestBodies\" />
+    <Folder Include="TestEntries\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestBodies\" />
-    <Folder Include="TestEntries\" />
+    <ProjectReference Include="..\JournalCli.GenericCli\JournalCli.GenericCli.csproj" />
+    <ProjectReference Include="..\JournalCli.Library\JournalCli.Library.csproj" />
+    <ProjectReference Include="..\JournalCli.Pwsh\JournalCli.Pwsh.csproj" />
   </ItemGroup>
 
   <ItemGroup>

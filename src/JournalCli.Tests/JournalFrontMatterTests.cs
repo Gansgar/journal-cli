@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO.Abstractions.TestingHelpers;
 using FluentAssertions;
-using JournalCli.Core;
-using JournalCli.Infrastructure;
+using JournalCli.Pwsh.Core;
+using JournalCli.Pwsh.Infrastructure;
 using Xunit;
 using NodaTime;
 

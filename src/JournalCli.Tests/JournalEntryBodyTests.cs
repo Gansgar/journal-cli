@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using JournalCli.Core;
 using Xunit;
 using System.Linq;
 using FluentAssertions;
-using JournalCli.Infrastructure;
+using JournalCli.Pwsh.Core;
+using JournalCli.Pwsh.Infrastructure;
 using NodaTime;
 
 // ReSharper disable StringLiteralTypo

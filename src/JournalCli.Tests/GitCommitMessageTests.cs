@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentAssertions;
-using JournalCli.Infrastructure;
+using JournalCli.Pwsh.Infrastructure;
 using Xunit;
 
 namespace JournalCli.Tests

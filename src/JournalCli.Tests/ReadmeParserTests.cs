@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
-using JournalCli.Infrastructure;
+using JournalCli.Pwsh.Infrastructure;
 using NodaTime;
 using Xunit;
 
