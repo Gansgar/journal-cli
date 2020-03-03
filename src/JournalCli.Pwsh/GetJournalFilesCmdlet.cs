@@ -6,13 +6,14 @@ using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsCommon.Get, "JournalFiles")]
     [OutputType(typeof(PSObject[]))]
-    public class GetJournalFilesCmdlet : JournalCmdletBase
+    public class GetJournalFilesCmdlet : JournalCmdletBase, IGetJournalFilesParameters
     {
         [Parameter]
         public DateTime? From { get; set; }

@@ -5,13 +5,14 @@ using ICSharpCode.SharpZipLib.Zip;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsData.Backup, "Journal")]
     [Alias("bj")]
-    public class BackupJournalCmdlet : JournalCmdletBase
+    public class BackupJournalCmdlet : JournalCmdletBase, IBackupJournalParameters<SwitchParameter>
     {
         [Parameter]
         public string BackupLocation { get; set; }

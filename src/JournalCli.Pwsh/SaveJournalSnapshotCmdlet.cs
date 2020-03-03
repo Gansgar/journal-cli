@@ -1,13 +1,14 @@
 ﻿using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsData.Save, "JournalSnapshot")]
     [Alias("sjs")]
-    public class SaveJournalSnapshotCmdlet : JournalCmdletBase
+    public class SaveJournalSnapshotCmdlet : JournalCmdletBase, ISaveJournalSnapshotParameters
     {
         [Parameter(Position = 0)]
         [ValidateLength(5, 60)]

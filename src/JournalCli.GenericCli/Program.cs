@@ -1,12 +1,26 @@
 ﻿using System;
+using CommandLine;
 
 namespace JournalCli.GenericCli
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static int Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            return Parser.Default.ParseArguments(args, 
+                    typeof(NewJournalEntryOptions), 
+                    typeof(AddJournalEntryContentOptions))
+                .MapResult(
+                    (NewJournalEntryOptions opts) => new NewJournalEntryCommand(opts).Run(), 
+                    (AddJournalEntryContentOptions opts) => RunAddJournalEntryContentCommand(opts),
+                    errs => 1);
+        }
+
+        private static int RunAddJournalEntryContentCommand(AddJournalEntryContentOptions opts)
+        {
+            throw new NotImplementedException();
         }
     }
+
+
 }

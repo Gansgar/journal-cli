@@ -5,6 +5,7 @@ using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
@@ -13,7 +14,7 @@ namespace JournalCli.Pwsh
     [OutputType(typeof(IEnumerable<JournalIndexEntry<MetaJournalEntry>>))]
     [OutputType(typeof(IEnumerable<JournalIndexEntry<CompleteJournalEntry>>))]
     [Alias("gjt")]
-    public class GetJournalEntriesByTagCmdlet : JournalCmdletBase
+    public class GetJournalEntriesByTagCmdlet : JournalCmdletBase, IGetJournalEntriesByTagParameters<SwitchParameter>
     {
         [Parameter(Mandatory = true)]
         public string[] Tags { get; set; }

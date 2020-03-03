@@ -2,6 +2,7 @@
 using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 using NodaTime;
 
 namespace JournalCli.Pwsh
@@ -9,7 +10,7 @@ namespace JournalCli.Pwsh
     [PublicAPI]
     [Cmdlet(VerbsCommon.Open, "RandomJournalEntry")]
     [Alias("orj")]
-    public class OpenRandomJournalEntryCmdlet : JournalCmdletBase
+    public class OpenRandomJournalEntryCmdlet : JournalCmdletBase, IOpenRandomJournalEntryParameters
     {
         [Parameter(ParameterSetName = "Range")]
         public DateTime? From { get; set; }

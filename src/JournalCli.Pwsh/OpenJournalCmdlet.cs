@@ -4,6 +4,7 @@ using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 using NodaTime;
 
 namespace JournalCli.Pwsh
@@ -13,7 +14,7 @@ namespace JournalCli.Pwsh
     [PublicAPI]
     [Cmdlet(VerbsCommon.Open, "Journal")]
     [Alias("oj")]
-    public class OpenJournalCmdlet : JournalCmdletBase
+    public class OpenJournalCmdlet : JournalCmdletBase, IOpenJournalParameters
     {
         [Parameter(ParameterSetName = "Current")]
         [ValidateSet("CurrentMonth", "CurrentYear", "Root")]

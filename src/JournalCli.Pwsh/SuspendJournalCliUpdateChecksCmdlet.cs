@@ -3,12 +3,13 @@ using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsLifecycle.Suspend, "JournalCliUpdateChecks")]
-    public class SuspendJournalCliUpdateChecksCmdlet : CmdletBase
+    public class SuspendJournalCliUpdateChecksCmdlet : CmdletBase, ISuspendJournalCliUpdateChecksParameters
     {
         [Parameter] 
         [ValidateRange(1, 365)]

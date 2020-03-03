@@ -3,6 +3,7 @@ using System.Linq;
 using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 using NodaTime;
 
 namespace JournalCli.Pwsh
@@ -10,7 +11,7 @@ namespace JournalCli.Pwsh
     [PublicAPI]
     [Alias("aje")]
     [Cmdlet(VerbsCommon.Add, "JournalEntryContent")]
-    public class AddJournalEntryContentCmdlet : JournalCmdletBase
+    public class AddJournalEntryContentCmdlet : JournalCmdletBase, IAddJournalEntryContentParameters
     {
         [Parameter]
         public DateTime Date { get; set; } = DateTime.Now;

@@ -4,6 +4,7 @@ using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
@@ -11,7 +12,7 @@ namespace JournalCli.Pwsh
     [Cmdlet(VerbsCommon.Get, "JournalIndex")]
     [OutputType(typeof(JournalIndex<>))]
     [Alias("gji")]
-    public class GetJournalIndexCmdlet : JournalCmdletBase
+    public class GetJournalIndexCmdlet : JournalCmdletBase, IGetJournalIndexParameters<SwitchParameter>
     {
         [Parameter]
         [ValidateSet("Count", "Name")]

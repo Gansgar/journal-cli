@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using JetBrains.Annotations;
+using JournalCli.Library.Controllers;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 using NodaTime;
 
 namespace JournalCli.Pwsh
@@ -9,13 +12,13 @@ namespace JournalCli.Pwsh
     [PublicAPI]
     [Cmdlet(VerbsCommon.New, "JournalEntry")]
     [Alias("nj")]
-    public class NewJournalEntryCmdlet : JournalCmdletBase
+    public class NewJournalEntryCmdlet : JournalCmdletBase, INewJournalEntryParameters
     {
         [Parameter]
         public int DateOffset { get; set; }
 
         [Parameter]
-        public string[] Tags { get; set; }
+        public IEnumerable<string> Tags { get; set; }
 
         [Parameter]
         public string Readme { get; set; }
@@ -25,11 +28,10 @@ namespace JournalCli.Pwsh
 
         protected override void RunJournalCommand()
         {
-            var journal = OpenJournal();
+            var controller = new NewJournalEntryController(this);
             var entryDate = Date == null ? Today.PlusDays(DateOffset) : LocalDate.FromDateTime(Date.Value).PlusDays(DateOffset);
 
-            var hour = Now.Time().Hour;
-            if (hour >= 0 && hour <= 4)
+            if (controller.IsAfterMidnight())
             {
                 var dayPrior = entryDate.Minus(Period.FromDays(1));
                 var question = $"Did you mean to create an entry for '{dayPrior}' or '{entryDate}'?";
@@ -38,19 +40,19 @@ namespace JournalCli.Pwsh
                     entryDate = dayPrior;
             }
 
-            Commit(GitCommitType.PreNewJournalEntry);
-
             try
             {
-                journal.CreateNewEntry(entryDate, Tags, Readme);
-                Commit(GitCommitType.PostNewJournalEntry);
+                var warnings = controller.CreateNewJournalEntry(entryDate);
+
+                foreach (var warning in warnings)
+                    WriteWarning(warning);
             }
             catch (JournalEntryAlreadyExistsException e)
             {
                 var question = $"An entry for {entryDate} already exists. Do you want to open it instead?";
                 if (YesOrNo(question))
                 {
-                    SystemProcess.Start(e.EntryFilePath);
+                    controller.OpenJournalEntry(e.EntryFilePath);
                 }
             }
         }

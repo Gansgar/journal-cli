@@ -3,12 +3,13 @@ using System.Linq;
 using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsCommon.Rename, "JournalTag", ConfirmImpact = ConfirmImpact.High)]
-    public class RenameJournalTagCmdlet : JournalCmdletBase
+    public class RenameJournalTagCmdlet : JournalCmdletBase, IRenameJournalTagParameters<SwitchParameter>
     {
         [Parameter]
         public SwitchParameter DryRun { get; set; }

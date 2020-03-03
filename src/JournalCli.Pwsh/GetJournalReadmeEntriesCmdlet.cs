@@ -3,6 +3,7 @@ using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
@@ -10,7 +11,7 @@ namespace JournalCli.Pwsh
     [Cmdlet(VerbsCommon.Get, "JournalReadmeEntries", DefaultParameterSetName = "All")]
     [OutputType(typeof(ReadmeJournalEntryCollection))]
     [Alias("Get-ReadmeEntries")]
-    public class GetJournalReadmeEntriesCmdlet : JournalCmdletBase
+    public class GetJournalReadmeEntriesCmdlet : JournalCmdletBase, IGetJournalReadmeEntriesParameters<SwitchParameter>
     {
         [Parameter(DontShow = true)]
         public SwitchParameter IncludeFuture { get; set; }

@@ -4,12 +4,13 @@ using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
 using JournalCli.Library.Infrastructure;
+using JournalCli.Library.Parameters;
 
 namespace JournalCli.Pwsh
 {
     [PublicAPI]
     [Cmdlet(VerbsCommon.New, "CompiledJournalEntry", DefaultParameterSetName = "Default")]
-    public class NewCompiledJournalEntryCmdlet : JournalCmdletBase
+    public class NewCompiledJournalEntryCmdlet : JournalCmdletBase, INewCompiledJournalEntryParameters<SwitchParameter>
     {
         [Parameter(ParameterSetName = "Default")]
         public DateTime? From { get; set; }
