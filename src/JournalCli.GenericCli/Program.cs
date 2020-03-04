@@ -11,16 +11,24 @@ namespace JournalCli.GenericCli
                     typeof(NewJournalEntryOptions), 
                     typeof(AddJournalEntryContentOptions))
                 .MapResult(
-                    (NewJournalEntryOptions opts) => new NewJournalEntryCommand(opts).Run(), 
-                    (AddJournalEntryContentOptions opts) => RunAddJournalEntryContentCommand(opts),
+                    (NewJournalEntryOptions opts) => RunCommand(new NewJournalEntryCommand(opts)), 
+                    (AddJournalEntryContentOptions opts) => RunCommand(new AddJournalEntryContentCommand(opts)),
                     errs => 1);
         }
 
-        private static int RunAddJournalEntryContentCommand(AddJournalEntryContentOptions opts)
+        private static int RunCommand(CommandBase command)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return command.Run();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.ResetColor();
+                return 1;
+            }
         }
     }
-
-
 }

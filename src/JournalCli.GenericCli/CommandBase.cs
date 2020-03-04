@@ -27,9 +27,15 @@ namespace JournalCli.GenericCli
 
                 _locationParameter.Location = _settings.DefaultJournalRoot;
             }
+
+            if (_settings.HideWelcomeScreen)
+                return;
+
+            ShowSplashScreen("Welcome! I hope you love using JournalCli. For help and other information, visit https://journalcli.me. Send feedback to hi@journalcli.me.");
+            _settings.HideWelcomeScreen = true;
+            _settings.Save(_encryptedStore);
         }
 
-        [UsedImplicitly]
         public abstract int Run();
 
         protected int Choice(string header, params string[] choices)
@@ -37,9 +43,7 @@ namespace JournalCli.GenericCli
             int index;
             while (true)
             {
-                Console.ForegroundColor = Console.BackgroundColor;
-                Console.BackgroundColor = Console.ForegroundColor;
-
+                InvertConsoleColors();
                 Console.WriteLine(header);
 
                 var builder = new StringBuilder();
@@ -72,8 +76,8 @@ namespace JournalCli.GenericCli
             ConsoleKeyInfo result;
             while (true)
             {
-                Console.ForegroundColor = Console.BackgroundColor;
-                Console.BackgroundColor = Console.ForegroundColor;
+                InvertConsoleColors();
+
                 Console.Write($"{question} (y/n)");
                 Console.ResetColor();
                 Console.Write(" ");
@@ -87,6 +91,19 @@ namespace JournalCli.GenericCli
             }
 
             return result.Key == ConsoleKey.Y;
+        }
+
+        private void InvertConsoleColors()
+        {
+            var foreColor = Console.BackgroundColor;
+            var backColor = Console.ForegroundColor;
+            Console.ForegroundColor = foreColor;
+            Console.BackgroundColor = backColor;
+        }
+
+        private void CheckForUpdates()
+        {
+            throw new NotImplementedException();
         }
 
         private void ShowSplashScreen(string message)
