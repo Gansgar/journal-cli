@@ -17,17 +17,14 @@ namespace JournalCli.Library.Controllers
 #endif
         protected ControllerBase(ILocationParameter locationParameter) => _locationParameter = locationParameter;
 
-        public bool IsAfterMidnight()
-        {
-            var hour = Now.Time().Hour;
-            return hour >= 0 && hour <= 4;
-        }
+        public Warnings Warnings { get; set; } = new Warnings();
+
+        
 
         public void OpenJournalEntry(string filePath) => SystemProcess.Start(filePath);
 
-        protected Warnings Commit(GitCommitType commitType)
+        protected void Commit(GitCommitType commitType)
         {
-            var warnings = new Warnings();
 #if !DEBUG
             try
             {
@@ -39,25 +36,23 @@ namespace JournalCli.Library.Controllers
             {
                 if (!_beenWarned)
                 {
-                    warnings.Add(MissingGitBinaryWarning);
+                    Warnings.Add(MissingGitBinaryWarning);
                     _beenWarned = true;
                 }
             }
 #endif
-            return warnings;
         }
 
-        private protected Journal OpenJournal(string location)
+        private protected Journal OpenJournal()
         {
             var fileSystem = new FileSystem();
-            var ioFactory = new JournalReaderWriterFactory(fileSystem, location);
-            var markdownFiles = new MarkdownFiles(fileSystem, location);
+            var ioFactory = new JournalReaderWriterFactory(fileSystem, _locationParameter.Location);
+            var markdownFiles = new MarkdownFiles(fileSystem, _locationParameter.Location);
             return Journal.Open(ioFactory, markdownFiles, SystemProcess);
         }
 
-        private protected Warnings Commit(string message)
+        private protected void Commit(string message)
         {
-            var warnings = new Warnings();
 #if !DEBUG
             try
             {
@@ -68,12 +63,11 @@ namespace JournalCli.Library.Controllers
             {
                 if (!_beenWarned)
                 {
-                    warnings.Add(MissingGitBinaryWarning);
+                    Warnings.Add(MissingGitBinaryWarning);
                     _beenWarned = true;
                 }
             }
 #endif
-            return warnings;
         }
 
         private protected ISystemProcess SystemProcess { get; } = SystemProcessFactory.Create();
@@ -122,5 +116,19 @@ namespace JournalCli.Library.Controllers
                 var commit = repo.Commit("Initial commit", author, committer, options);
             }
         }
+    }
+
+    public abstract class JournalController : ControllerBase
+    {
+        protected JournalController(ILocationParameter locationParameter) : base(locationParameter) { }
+
+        public abstract void Run();
+    }
+
+    public abstract class JournalResultController : ControllerBase
+    {
+        protected JournalResultController(ILocationParameter locationParameter) : base(locationParameter) { }
+
+        public abstract T Run<T>();
     }
 }

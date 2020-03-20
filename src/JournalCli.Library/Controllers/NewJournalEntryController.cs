@@ -5,21 +5,23 @@ using NodaTime;
 
 namespace JournalCli.Library.Controllers
 {
-    public class NewJournalEntryController : ControllerBase
+    public class NewJournalEntryController : JournalController
     {
         private readonly INewJournalEntryParameters _parameters;
+        private readonly LocalDate _entryDate;
 
-        public NewJournalEntryController(INewJournalEntryParameters parameters) : base(parameters) => _parameters = parameters;
-
-        public Warnings CreateNewJournalEntry(LocalDate entryDate)
+        public NewJournalEntryController(INewJournalEntryParameters parameters, LocalDate entryDate) : base(parameters)
         {
-            var journal = OpenJournal(_parameters.Location);
-            var warnings1 = Commit(GitCommitType.PreNewJournalEntry);
-            journal.CreateNewEntry(entryDate, _parameters.Tags.ToArray(), _parameters.Readme);
-            var warnings2 = Commit(GitCommitType.PostNewJournalEntry);
+            _parameters = parameters;
+            _entryDate = entryDate;
+        }
 
-            warnings1.Add(warnings2);
-            return warnings1;
+        public override void Run()
+        {
+            var journal = OpenJournal();
+            Commit(GitCommitType.PreNewJournalEntry);
+            journal.CreateNewEntry(_entryDate, _parameters.Tags.ToArray(), _parameters.Readme);
+            Commit(GitCommitType.PostNewJournalEntry);
         }
     }
 }

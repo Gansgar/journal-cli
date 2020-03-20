@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 using CommandLine;
 
 namespace JournalCli.GenericCli
@@ -7,25 +11,48 @@ namespace JournalCli.GenericCli
     {
         private static int Main(string[] args)
         {
-            return Parser.Default.ParseArguments(args, 
-                    typeof(NewJournalEntryOptions), 
-                    typeof(AddJournalEntryContentOptions))
-                .MapResult(
-                    (NewJournalEntryOptions opts) => RunCommand(new NewJournalEntryCommand(opts)), 
-                    (AddJournalEntryContentOptions opts) => RunCommand(new AddJournalEntryContentCommand(opts)),
-                    errs => 1);
+#if DEBUG
+            if (Debugger.IsAttached)
+                return RunDebugLoop();
+#endif
+            return RunProgram(args);
         }
 
-        private static int RunCommand(CommandBase command)
+#if DEBUG
+        private static int RunDebugLoop()
+        {
+            Console.WriteLine("Enter command:");
+
+            while (true)
+            {
+                var args = Console.ReadLine()?.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                var result = RunProgram(args);
+                Console.WriteLine("Last exit code: " + result);
+                Console.WriteLine();
+                Console.WriteLine("Enter command:");
+            }
+        }
+#endif
+        private static int RunProgram(IEnumerable<string> args)
         {
             try
             {
-                return command.Run();
+                var optionTypes = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.BaseType == typeof(JournalOptionsBase));
+                var parserResult = Parser.Default.ParseArguments(args, optionTypes.ToArray());
+
+                var commandType = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.BaseType == typeof(JournalCommandBase))
+                    .Single(t => t.GetConstructor(new[] { parserResult.TypeInfo.Current }) != null);
+
+                return parserResult.MapResult(options =>
+                {
+                    var command = (dynamic)Activator.CreateInstance(commandType, options);
+                    return command.Run();
+                }, errs => 1);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Error: {e.Message}");
                 Console.ResetColor();
                 return 1;
             }

@@ -127,7 +127,7 @@ namespace JournalCli.Library
             where T : class, IJournalEntry
         {
             var index = new JournalIndex<T>();
-
+            
             foreach (var file in _markdownFiles.FindAll())
             {
                 var reader = _readerWriterFactory.CreateReader(file);

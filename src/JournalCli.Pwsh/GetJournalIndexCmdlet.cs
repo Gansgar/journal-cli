@@ -3,6 +3,7 @@ using System.Linq;
 using System.Management.Automation;
 using JetBrains.Annotations;
 using JournalCli.Library;
+using JournalCli.Library.Controllers;
 using JournalCli.Library.Infrastructure;
 using JournalCli.Library.Parameters;
 
@@ -33,6 +34,9 @@ namespace JournalCli.Pwsh
 
         protected override void RunJournalCommand()
         {
+            var controller = new GetJournalIndexController<SwitchParameter>(this);
+
+
             var dateRange = GetRangeOrNull(From, To);
             var journal = OpenJournal();
 
@@ -71,5 +75,6 @@ namespace JournalCli.Pwsh
             }
         }
 
+        bool ISwitchParameter<SwitchParameter>.ToBool(SwitchParameter value) => value.ToBool();
     }
 }

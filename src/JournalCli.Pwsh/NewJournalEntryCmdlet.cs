@@ -28,10 +28,9 @@ namespace JournalCli.Pwsh
 
         protected override void RunJournalCommand()
         {
-            var controller = new NewJournalEntryController(this);
             var entryDate = Date == null ? Today.PlusDays(DateOffset) : LocalDate.FromDateTime(Date.Value).PlusDays(DateOffset);
 
-            if (controller.IsAfterMidnight())
+            if (Now.IsAfterMidnight())
             {
                 var dayPrior = entryDate.Minus(Period.FromDays(1));
                 var question = $"Did you mean to create an entry for '{dayPrior}' or '{entryDate}'?";
@@ -40,11 +39,13 @@ namespace JournalCli.Pwsh
                     entryDate = dayPrior;
             }
 
+            var controller = new NewJournalEntryController(this, entryDate);
+
             try
             {
-                var warnings = controller.CreateNewJournalEntry(entryDate);
+                controller.Run();
 
-                foreach (var warning in warnings)
+                foreach (var warning in controller.Warnings)
                     WriteWarning(warning);
             }
             catch (JournalEntryAlreadyExistsException e)

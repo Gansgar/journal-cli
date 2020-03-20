@@ -6,6 +6,8 @@ namespace JournalCli.Library.Infrastructure
 {
     internal class DateRange
     {
+        public static DateRange GetRangeOrNull(DateTime? from, DateTime to) => from.HasValue ? new DateRange(from.Value, to) : null;
+
         public DateRange(LocalDate from, LocalDate to)
         {
             if (from >= to)

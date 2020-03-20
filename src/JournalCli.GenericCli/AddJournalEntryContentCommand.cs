@@ -2,7 +2,7 @@
 
 namespace JournalCli.GenericCli
 {
-    internal class AddJournalEntryContentCommand : CommandBase
+    internal class AddJournalEntryContentCommand : JournalCommandBase
     {
         public AddJournalEntryContentCommand(AddJournalEntryContentOptions opts)
             : base(opts)

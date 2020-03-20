@@ -7,14 +7,14 @@ using JournalCli.Library.Parameters;
 
 namespace JournalCli.GenericCli
 {
-    public abstract class CommandBase
+    public abstract class JournalCommandBase
     {
         private const string Error = "Journal location was not provided and no default location exists. One or the other is required";
         private readonly UserSettings _settings;
         private readonly IEncryptedStore<UserSettings> _encryptedStore;
         private readonly ILocationParameter _locationParameter;
 
-        protected CommandBase(ILocationParameter locationParameter)
+        protected JournalCommandBase(ILocationParameter locationParameter)
         {
             _locationParameter = locationParameter;
             _encryptedStore = EncryptedStoreFactory.Create<UserSettings>();
